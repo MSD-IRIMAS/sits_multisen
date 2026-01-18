@@ -1,0 +1,22 @@
+
+
+dataset:
+  base_path: "/folds"
+  folds: ["fold_0", "fold_1", "fold_2", "fold_3", "fold_4"]
+  n_classes: 14
+  excluded_classes: [7, 10, 12]
+  normalize: false
+  stats_csv_path: "/global_dataset_stats.csv" 
+  class_ref_path: "/class_relationship_table.csv"
+
+analysis:
+  max_lag: 22
+  channel_count: 10
+
+output:
+  dir: "${hydra:runtime.cwd}/results"
+  save_plots: true
+
+run:
+  autocorrelation: true
+  inter_channel: true
