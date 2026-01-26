@@ -1,13 +1,27 @@
-
+task: "dataset"
 
 dataset:
-  base_path: "/folds"
+  base_path: "${hydra:runtime.cwd}/my_dataset_output" 
+  
+  paths:
+    folds_csv: "/chemin/vers/tes/folds_csv"
+    labels: "/chemin/vers/tes/json_labels"
+    ground_reference: "/chemin/vers/tes/tif_ground_truth"
+    s2_images: "/chemin/vers/tes/images_satellite"
+    output: "${dataset.base_path}" 
+
   folds: ["fold_0", "fold_1", "fold_2", "fold_3", "fold_4"]
   n_classes: 14
   excluded_classes: [7, 10, 12]
   normalize: false
-  stats_csv_path: "/global_dataset_stats.csv" 
+  
+  stats_csv_path: "${dataset.base_path}/global_dataset_stats.csv" 
+  
   class_ref_path: "/class_relationship_table.csv"
+  
+  satellite: "corresponding_s2"
+  img_size: 256
+  link_method: "hardlink"
 
 analysis:
   max_lag: 22

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multisenge-processing"
+version = "0.1.0"
+description = "Pipeline for multisenge transformation"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+  {name = "Victor THIEBAUT", email = "victor.thiebaut@uha.fr"}
+]
+dependencies = [
+    "numpy>=1.24.0",    
+    "pandas>=2.0.0",
+    "rasterio>=1.3.0",
+    "tqdm",       
+    "hydra-core>=1.3",
+    "omegaconf>=2.3",
+    "matplotlib>=3.7"
+]
+
+[project.scripts]
+multisenge = "main:main"
+
+[tool.setuptools]
+py-modules = [
+    "main", 
+    "main_dataset", 
+    "main_analyses", 
+    "dataset_extraction", 
+    "dataset_statistics"
+]
+packages = ["utils", "src"] # Inclut tes dossiers utils et src
